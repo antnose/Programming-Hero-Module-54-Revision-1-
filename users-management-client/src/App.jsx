@@ -18,7 +18,7 @@ function App() {
     const user = { name, email };
     console.log(user);
 
-    fetch("http://localhost:3001/users", {
+    fetch(`http://localhost:3001/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -27,7 +27,10 @@ function App() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("Inside post response", data);
+        console.log(data);
+        const newUsers = [...users, data];
+        setUsers(newUsers);
+        form.reset();
       });
   };
 
